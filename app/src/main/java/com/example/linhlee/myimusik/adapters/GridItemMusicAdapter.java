@@ -31,6 +31,8 @@ public class GridItemMusicAdapter extends BaseAdapter {
     private int layout;
     private ArrayList<MusicItem> listItem;
 
+    private final static int MAX_VOLUME = 100;
+
     public GridItemMusicAdapter(MainActivity context, int layout, ArrayList<MusicItem> listItem) {
         this.context = context;
         this.layout = layout;
@@ -71,19 +73,24 @@ public class GridItemMusicAdapter extends BaseAdapter {
         img.setImageResource(listItem.get(position).getImgRes());
 
 
-        /*final SeekBar volumnSeekBar;
+        final SeekBar volumeSeekBar;
         final AudioManager audioManager;
 
-        try {
-            volumnSeekBar = (SeekBar) convertView.findViewById(R.id.seek_bar);
-            audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-            volumnSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-            volumnSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+        final MediaPlayer[] mp = {null};
 
-            volumnSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        try {
+            volumeSeekBar = (SeekBar) convertView.findViewById(R.id.seek_bar);
+            audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+            volumeSeekBar.setMax(MAX_VOLUME);
+            volumeSeekBar.setProgress(MAX_VOLUME * audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+
+            volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+                    float volume = (float) (1 - (Math.log(100 - progress) / Math.log(100)));
+                    if (mp[0] != null) {
+                        mp[0].setVolume(volume, volume);
+                    }
                 }
 
                 @Override
@@ -100,9 +107,7 @@ public class GridItemMusicAdapter extends BaseAdapter {
         }
         catch (Exception e) {
             e.printStackTrace();
-        }*/
-
-        final MediaPlayer[] mp = {null};
+        }
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
