@@ -73,13 +73,14 @@ public class GridItemMusicAdapter extends BaseAdapter {
         img.setImageResource(listItem.get(position).getImgRes());
 
 
-        final SeekBar volumeSeekBar;
-        final AudioManager audioManager;
+        SeekBar volumeSeekBar = null;
+        AudioManager audioManager = null;
 
         final MediaPlayer[] mp = {null};
 
         try {
             volumeSeekBar = (SeekBar) convertView.findViewById(R.id.seek_bar);
+            //volumeSeekBar.setVisibility(View.GONE);
             audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
             volumeSeekBar.setMax(MAX_VOLUME);
             volumeSeekBar.setProgress(MAX_VOLUME * audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
@@ -109,6 +110,8 @@ public class GridItemMusicAdapter extends BaseAdapter {
             e.printStackTrace();
         }
 
+        final SeekBar finalVolumeSeekBar = volumeSeekBar;
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,8 +123,11 @@ public class GridItemMusicAdapter extends BaseAdapter {
                     img.setImageResource(listItem.get(position).getImgRes());
                     listItem.get(position).setIsPlaying(false);
                 } else if (mp[0] == null && listItem.get(position).isPlaying() == false) {
+                    int progress = finalVolumeSeekBar.getProgress();
+                    float volume = (float) (1 - (Math.log(100 - progress) / Math.log(100)));
 
                     mp[0] = MediaPlayer.create(context, listItem.get(position).getAudioRes());
+                    mp[0].setVolume(volume, volume);
                     mp[0].start();
                     img.setImageResource(listItem.get(position).getImgWhiteRes());
                     listItem.get(position).setIsPlaying(true);
