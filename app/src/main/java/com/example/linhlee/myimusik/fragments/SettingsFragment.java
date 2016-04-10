@@ -1,19 +1,19 @@
 package com.example.linhlee.myimusik.fragments;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.linhlee.myimusik.adapters.ListItemSettingsAdapter;
-import com.example.linhlee.myimusik.activities.MainActivity;
 import com.example.linhlee.myimusik.R;
+import com.example.linhlee.myimusik.activities.AboutActivity;
+import com.example.linhlee.myimusik.activities.MainActivity;
+import com.example.linhlee.myimusik.adapters.ListItemSettingsAdapter;
 
 import java.util.ArrayList;
 
@@ -42,7 +42,7 @@ public class SettingsFragment extends Fragment {
 
         listView = (ListView) rootView.findViewById(R.id.list_settings_item);
 
-        listAdapter = new ListItemSettingsAdapter((MainActivity)getActivity(), R.layout.settings_item, arrayList);
+        listAdapter = new ListItemSettingsAdapter((MainActivity) getActivity(), R.layout.settings_item, arrayList);
 
         listView.setAdapter(listAdapter);
 
@@ -51,7 +51,8 @@ public class SettingsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        showDialog();
+                        Intent intent = new Intent((MainActivity) getActivity(), AboutActivity.class);
+                        startActivity(intent);
                     case 1:
                     case 2:
                 }
@@ -61,9 +62,4 @@ public class SettingsFragment extends Fragment {
         return rootView;
     }
 
-    private void showDialog() {
-        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-        alertDialog.setMessage("Created by Linh Lee");
-        alertDialog.show();
-    }
 }

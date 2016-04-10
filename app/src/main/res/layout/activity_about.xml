@@ -9,21 +9,29 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
 
+        <ImageView
+            android:id="@+id/btn_back_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_back"
+            android:paddingLeft="10dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Settings"
+            android:text="About"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/list_settings_item"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0.5dp"></ListView>
+        android:text="Created by Linh Lee"
+        android:layout_margin="15dp"
+        android:textSize="20sp"/>
 
 </LinearLayout>

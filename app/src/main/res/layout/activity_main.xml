@@ -14,9 +14,9 @@
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
-        app:pstsIndicatorColor="#FF33B5E6"
+        app:pstsIndicatorColor="@color/colorPrimary"
         app:pstsShouldExpand="true"
-        app:pstsUnderlineColor="#FF33B5E6"
+        app:pstsUnderlineColor="@color/colorPrimary"
         app:pstsTextAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="48dip"
