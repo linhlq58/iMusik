@@ -85,19 +85,20 @@ public class IMusikFragment extends Fragment {
 
     private void initArray() {
         arrayList = new ArrayList<>();
-        arrayList.add(new MusicItem(R.mipmap.rain, R.mipmap.rain_white, R.raw.night, false));
+        arrayList.add(new MusicItem(R.mipmap.rain, R.mipmap.rain_white, R.raw.rain, false));
         arrayList.add(new MusicItem(R.mipmap.thunderstorm, R.mipmap.thunderstorm_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.wind, R.mipmap.wind_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.forest, R.mipmap.forest_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.leaves, R.mipmap.leaves_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.waterstream, R.mipmap.waterstream_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.seaside, R.mipmap.seaside_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.water, R.mipmap.water_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.fireplace, R.mipmap.fireplace_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.night, R.mipmap.night_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.coffee, R.mipmap.coffee_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.train, R.mipmap.train_white, R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(R.mipmap.fan, R.mipmap.fan_white, R.raw.thunderstorm, false));
+        arrayList.add(new MusicItem(R.mipmap.wind, R.mipmap.wind_white, R.raw.wind, false));
+        arrayList.add(new MusicItem(R.mipmap.forest, R.mipmap.forest_white, R.raw.forest, false));
+        arrayList.add(new MusicItem(R.mipmap.leaves, R.mipmap.leaves_white, R.raw.leaves, false));
+        arrayList.add(new MusicItem(R.mipmap.waterstream, R.mipmap.waterstream_white, R.raw.waterstream, false));
+        arrayList.add(new MusicItem(R.mipmap.seaside, R.mipmap.seaside_white, R.raw.seaside, false));
+        arrayList.add(new MusicItem(R.mipmap.water, R.mipmap.water_white, R.raw.water, false));
+        arrayList.add(new MusicItem(R.mipmap.fireplace, R.mipmap.fireplace_white, R.raw.fireplace, false));
+        arrayList.add(new MusicItem(R.mipmap.night, R.mipmap.night_white, R.raw.night, false));
+        arrayList.add(new MusicItem(R.mipmap.coffee, R.mipmap.coffee_white, R.raw.coffee, false));
+        arrayList.add(new MusicItem(R.mipmap.train, R.mipmap.train_white, R.raw.train, false));
+        arrayList.add(new MusicItem(R.mipmap.fan, R.mipmap.fan_white, R.raw.fan, false));
+        arrayList.add(new MusicItem(R.mipmap.noise, R.mipmap.noise, R.raw.thunderstorm, false));
     }
 
 }
