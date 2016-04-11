@@ -1,6 +1,9 @@
 package com.example.linhlee.myimusik.adapters;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -11,12 +14,14 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linhlee.myimusik.R;
 import com.example.linhlee.myimusik.activities.MainActivity;
+import com.example.linhlee.myimusik.fragments.IMusikFragment;
 import com.example.linhlee.myimusik.objects.MusicItem;
 
 import java.io.IOException;
@@ -66,22 +71,34 @@ public class GridItemMusicAdapter extends BaseAdapter {
                 "#3BB9FF", "#38ACEC", "#38ACEC", "#3BB9FF",
                 "#3BB9FF", "#38ACEC"};
 
-        LinearLayout gridItemLayout = (LinearLayout) convertView.findViewById(R.id.grid_item_layout);
+        RelativeLayout gridItemLayout = (RelativeLayout) convertView.findViewById(R.id.grid_item_layout);
         gridItemLayout.setBackgroundColor(Color.parseColor(arrayColor[position]));
 
         final ImageView img = (ImageView) convertView.findViewById(R.id.img);
-        img.setImageResource(listItem.get(position).getImgRes());
+        if (listItem.get(position).isPlaying()) {
+            img.setImageResource(listItem.get(position).getImgWhiteRes());
+        } else {
+            img.setImageResource(listItem.get(position).getImgRes());
+        }
 
 
         SeekBar volumeSeekBar = null;
         AudioManager audioManager = null;
 
-        final MediaPlayer[] mp = {null};
+
+
+        volumeSeekBar = (SeekBar) convertView.findViewById(R.id.seek_bar);
+        if (listItem.get(position).isPlaying()) {
+            volumeSeekBar.setVisibility(View.VISIBLE);
+        } else {
+            volumeSeekBar.setVisibility(View.GONE);
+        }
+        audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+        final MediaPlayer[] mp = {listItem.get(position).getMp()};
 
         try {
-            volumeSeekBar = (SeekBar) convertView.findViewById(R.id.seek_bar);
-            //volumeSeekBar.setVisibility(View.GONE);
-            audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
             volumeSeekBar.setMax(MAX_VOLUME);
             volumeSeekBar.setProgress(MAX_VOLUME * audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
@@ -120,16 +137,20 @@ public class GridItemMusicAdapter extends BaseAdapter {
                     mp[0].stop();
                     mp[0].release();
                     mp[0] = null;
+                    listItem.get(position).setMp(mp[0]);
                     img.setImageResource(listItem.get(position).getImgRes());
+                    finalVolumeSeekBar.setVisibility(View.GONE);
                     listItem.get(position).setIsPlaying(false);
                 } else if (mp[0] == null && listItem.get(position).isPlaying() == false) {
                     int progress = finalVolumeSeekBar.getProgress();
                     float volume = (float) (1 - (Math.log(100 - progress) / Math.log(100)));
 
                     mp[0] = MediaPlayer.create(context, listItem.get(position).getAudioRes());
+                    listItem.get(position).setMp(mp[0]);
                     mp[0].setVolume(volume, volume);
                     mp[0].start();
                     img.setImageResource(listItem.get(position).getImgWhiteRes());
+                    finalVolumeSeekBar.setVisibility(View.VISIBLE);
                     listItem.get(position).setIsPlaying(true);
                 }
 

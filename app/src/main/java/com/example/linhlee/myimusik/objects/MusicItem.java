@@ -11,6 +11,8 @@ public class MusicItem {
     private int audioRes;
     private boolean isPlaying;
 
+    private MediaPlayer mp = null;
+
     public MusicItem(int imgRes,int imgWhiteRes, int audioRes, boolean isPlaying) {
         this.imgRes = imgRes;
         this.imgWhiteRes = imgWhiteRes;
@@ -48,5 +50,13 @@ public class MusicItem {
 
     public void setIsPlaying(boolean isPlaying) {
         this.isPlaying = isPlaying;
+    }
+
+    public MediaPlayer getMp() {
+        return mp;
+    }
+
+    public void setMp(MediaPlayer mp) {
+        this.mp = mp;
     }
 }

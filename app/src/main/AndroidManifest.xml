@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".activities.AboutActivity">
         </activity>
+        <activity android:name=".activities.CopyrightActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.linhlee.myimusik.R;
 import com.example.linhlee.myimusik.activities.AboutActivity;
+import com.example.linhlee.myimusik.activities.CopyrightActivity;
 import com.example.linhlee.myimusik.activities.MainActivity;
 import com.example.linhlee.myimusik.adapters.ListItemSettingsAdapter;
 
@@ -51,9 +52,11 @@ public class SettingsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent((MainActivity) getActivity(), AboutActivity.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent((MainActivity) getActivity(), AboutActivity.class);
+                        startActivity(intent1);
                     case 1:
+                        Intent intent2 = new Intent((MainActivity) getActivity(), CopyrightActivity.class);
+                        startActivity(intent2);
                     case 2:
                 }
             }
