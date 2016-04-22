@@ -45,6 +45,11 @@ public class IMusikFragment extends Fragment {
             R.mipmap.night_white, R.mipmap.coffee_white, R.mipmap.train_white,
             R.mipmap.fan_white, R.mipmap.noise_white};
 
+    private int[] listMusic = {R.raw.rain, R.raw.thunderstorm, R.raw.wind, R.raw.forest,
+            R.raw.leaves, R.raw.waterstream, R.raw.seaside, R.raw.water,
+            R.raw.fireplace, R.raw.night, R.raw.coffee,
+            R.raw.train, R.raw.fan, R.raw.wind};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,20 +108,9 @@ public class IMusikFragment extends Fragment {
 
     private void initArray() {
         arrayList = new ArrayList<>();
-        arrayList.add(new MusicItem(listImg[0], listWhiteImg[0], R.raw.rain, false));
-        arrayList.add(new MusicItem(listImg[1], listWhiteImg[1], R.raw.thunderstorm, false));
-        arrayList.add(new MusicItem(listImg[2], listWhiteImg[2], R.raw.wind, false));
-        arrayList.add(new MusicItem(listImg[3], listWhiteImg[3], R.raw.forest, false));
-        arrayList.add(new MusicItem(listImg[4], listWhiteImg[4], R.raw.leaves, false));
-        arrayList.add(new MusicItem(listImg[5], listWhiteImg[5], R.raw.waterstream, false));
-        arrayList.add(new MusicItem(listImg[6], listWhiteImg[6], R.raw.seaside, false));
-        arrayList.add(new MusicItem(listImg[7], listWhiteImg[7], R.raw.water, false));
-        arrayList.add(new MusicItem(listImg[8], listWhiteImg[8], R.raw.fireplace, false));
-        arrayList.add(new MusicItem(listImg[9], listWhiteImg[9], R.raw.night, false));
-        arrayList.add(new MusicItem(listImg[10], listWhiteImg[10], R.raw.coffee, false));
-        arrayList.add(new MusicItem(listImg[11], listWhiteImg[11], R.raw.train, false));
-        arrayList.add(new MusicItem(listImg[12], listWhiteImg[12], R.raw.fan, false));
-        arrayList.add(new MusicItem(listImg[13], listWhiteImg[13], R.raw.wind, false));
+        for (int i = 0;i < 14;i++) {
+            arrayList.add(new MusicItem(listImg[i], listWhiteImg[i], listMusic[i], false));
+        }
     }
 
 }

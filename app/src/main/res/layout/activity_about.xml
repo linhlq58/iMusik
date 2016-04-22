@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This application is developed by Linh Lee. I hope that it will help you have a good time!"
+        android:text="This application is developed by Linh Lee. I hope it will offer you a good time!"
         android:layout_margin="15dp"
         android:textSize="20sp"/>
 

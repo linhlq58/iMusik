@@ -1,6 +1,7 @@
 package com.example.linhlee.myimusik.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -54,10 +55,16 @@ public class SettingsFragment extends Fragment {
                     case 0:
                         Intent intent1 = new Intent((MainActivity) getActivity(), AboutActivity.class);
                         startActivity(intent1);
+                        break;
                     case 1:
                         Intent intent2 = new Intent((MainActivity) getActivity(), CopyrightActivity.class);
                         startActivity(intent2);
+                        break;
                     case 2:
+                        Uri uri = Uri.parse("https://play.google.com/store");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
